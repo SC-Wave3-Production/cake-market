@@ -21,7 +21,8 @@
       "error",
       {
         "allow": [
-          "_id"
+          "_id",
+          "__REDUX_DEVTOOLS_EXTENSION__"
         ]
       }
     ],
@@ -64,7 +65,7 @@
     ],
     "max-len": [
       "error",
-      100,
+      1000,
       {
         "ignoreUrls": true
       }
