@@ -17,12 +17,7 @@ const getImageUrls = (id) => {
 	return storage.ref(`/${id}`)
 		.listAll()
 		.then((data) => {
-			return Promise.all(
-				data.items.map((item) => {
-					console.log('item:', item);
-					return item.getDownloadURL();
-				}),
-			);
+			return Promise.all(data.items.map((item) => item.getDownloadURL()));
 		});
 };
 
