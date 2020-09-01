@@ -7,19 +7,17 @@ function App() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getCakes());
-	});
+	}, [dispatch]);
 
 	let { allCakes } = useSelector((state) => {
 		return state.cakes;
 	});
 
-	allCakes = allCakes || [];
-	let i = 0;
 	return (
 		<div className="title">
 			{allCakes.map((item) => {
 				return (
-					<div key={i++}>
+					<div key={item.id}>
 						<h1>{item.name}</h1>
 						<span>{item.description}</span>
 					</div>

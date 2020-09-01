@@ -4,7 +4,16 @@ const initialState = {
 	allCakes: [],
 };
 
-export const getCakes = (amount = 1) => {
+const GET_CAKES = 'GET_CAKES'
+
+const getDataAction = (data) => {
+	return {
+		type: GET_CAKES,
+		payload: data
+	}
+}
+
+export const getCakes = () => {
 	return (dispatch) => {
 		const cakesRef = db.collection('cakes');
 		const cakesList = [];
@@ -14,15 +23,18 @@ export const getCakes = (amount = 1) => {
 					cakesList.push(doc.data());
 				}
 			});
-			dispatch({ type: 'GET_CAKES', payload: cakesList });
+			dispatch(getDataAction(cakesList));
 		});
 	};
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case 'GET_CAKES':
-			return { allCakes: action.payload };
+		case GET_CAKES:
+			return { 
+				...state,
+				allCakes: action.payload 
+			};
 		default:
 			return state;
 	}
