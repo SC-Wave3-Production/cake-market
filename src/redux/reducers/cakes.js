@@ -1,17 +1,30 @@
-import db from '../../config/fbConfig';
+import db, { storage } from '../../config/fbConfig';
 
 const initialState = {
 	allCakes: [],
 };
 
-const GET_CAKES = 'GET_CAKES'
+const GET_CAKES = 'GET_CAKES';
 
 const getDataAction = (data) => {
 	return {
 		type: GET_CAKES,
-		payload: data
-	}
-}
+		payload: data,
+	};
+};
+
+const getImageUrls = (id) => {
+	return storage.ref(`/${id}`)
+		.listAll()
+		.then((data) => {
+			return Promise.all(
+				data.items.map((item) => {
+					console.log('item:', item);
+					return item.getDownloadURL();
+				}),
+			);
+		});
+};
 
 export const getCakes = () => {
 	return (dispatch) => {
@@ -23,7 +36,12 @@ export const getCakes = () => {
 					cakesList.push(doc.data());
 				}
 			});
-			dispatch(getDataAction(cakesList));
+			Promise.all(cakesList.map((cake) => {
+					return getImageUrls(cake.id).then((urlArray) => ({ ...cake, urlArray }));
+				}),
+			).then((filledCakesList) => {
+				dispatch(getDataAction(filledCakesList));
+			});
 		});
 	};
 };
@@ -31,9 +49,9 @@ export const getCakes = () => {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case GET_CAKES:
-			return { 
+			return {
 				...state,
-				allCakes: action.payload 
+				allCakes: action.payload,
 			};
 		default:
 			return state;

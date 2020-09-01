@@ -9,7 +9,7 @@ function App() {
 		dispatch(getCakes());
 	}, [dispatch]);
 
-	let { allCakes } = useSelector((state) => {
+	const { allCakes } = useSelector((state) => {
 		return state.cakes;
 	});
 
@@ -20,6 +20,7 @@ function App() {
 					<div key={item.id}>
 						<h1>{item.name}</h1>
 						<span>{item.description}</span>
+						<img alt={item.name} src={item.urlArray[0]} />
 					</div>
 				);
 			})}
