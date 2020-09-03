@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
+import 'fontsource-roboto';
 import { getCakes } from './redux/reducers/cakes';
+import Cards from './components/Cards'
+import CakeDetails from './components/CakeDetails'
+
 import './App.css';
 
 function App() {
@@ -15,15 +20,18 @@ function App() {
 
 	return (
 		<div className="title">
-			{allCakes.map((item) => {
-				return (
-					<div key={item.id}>
-						<h1>{item.name}</h1>
-						<span>{item.description}</span>
-						<img alt={item.name} src={item.urlArray[0]} />
-					</div>
-				);
-			})}
+			<Switch>
+				<Route exact path='/'>
+					<Cards allCakes={allCakes} />
+				</Route>
+				<Route exact path='/cart'>
+					<div>cart here</div>
+				</Route>
+				<Route path='/item/:itemId'>
+					<CakeDetails />
+				</Route>
+			</Switch>
+						
 		</div>
 	);
 }
