@@ -1,6 +1,7 @@
 .title {
     /* animation: App-logo-spin infinite 20s linear; */
-	text-align: center;
+    text-align: center;
+    width: 60%;
 }
 
 @keyframes App-logo-spin {
@@ -16,5 +17,8 @@
 
 .grid-img {
     width: 100%;
+}
 
+.card-link {
+    text-decoration: none;
 }

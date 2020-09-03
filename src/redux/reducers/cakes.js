@@ -14,7 +14,8 @@ const getDataAction = (data) => {
 };
 
 const getImageUrls = (id) => {
-	return storage.ref(`/${id}`)
+	return storage
+		.ref(`/${id}`)
 		.listAll()
 		.then((data) => {
 			return Promise.all(data.items.map((item) => item.getDownloadURL()));
@@ -31,7 +32,8 @@ export const getCakes = () => {
 					cakesList.push(doc.data());
 				}
 			});
-			Promise.all(cakesList.map((cake) => {
+			Promise.all(
+				cakesList.map((cake) => {
 					return getImageUrls(cake.id).then((urlArray) => ({ ...cake, urlArray }));
 				}),
 			).then((filledCakesList) => {

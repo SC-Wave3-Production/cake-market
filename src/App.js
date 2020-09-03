@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import 'fontsource-roboto';
 import { getCakes } from './redux/reducers/cakes';
-import Cards from './components/Cards'
-import CakeDetails from './components/CakeDetails'
+import Cards from './components/Cards';
+import CakeDetails from './components/CakeDetails';
 
 import './App.css';
 
@@ -21,17 +21,16 @@ function App() {
 	return (
 		<div className="title">
 			<Switch>
-				<Route exact path='/'>
+				<Route exact path="/">
 					<Cards allCakes={allCakes} />
 				</Route>
-				<Route exact path='/cart'>
+				<Route exact path="/cart">
 					<div>cart here</div>
 				</Route>
-				<Route path='/item/:itemId'>
+				<Route path="/item/:itemId">
 					<CakeDetails />
 				</Route>
 			</Switch>
-						
 		</div>
 	);
 }
