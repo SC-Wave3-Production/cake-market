@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import 'fontsource-roboto';
 import { getCakes } from './redux/reducers/cakes';
 import Cards from './components/Cards';
 import CakeDetails from './components/CakeDetails';
