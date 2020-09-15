@@ -18,7 +18,7 @@ function App() {
 	});
 
 	return (
-		<div className="title">
+		<div className="title w-screen">
 			<Switch>
 				<Route exact path="/">
 					<Cards allCakes={allCakes} />
