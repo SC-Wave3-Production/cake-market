@@ -12,9 +12,3 @@ code {
     monospace;
 }
 
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20%;
-}
