@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 export default function Cards({ allCakes }) {
 	return (
 		<div className="bg-red-200">
-			<div className="flex justify-between flex-wrap w-2/3 m-auto">
+			<div className="flex justify-between flex-wrap m-auto w-11/12">
 				{allCakes.map((item) => {
 					return (
 						<div
 							key={item.id}
-							className="m-1 max-w-xs bg-red-500 p-1 rounded text-center text-gray-800"
+							className="m-1 max-w-sm bg-red-500 p-1 rounded text-center text-gray-800"
 						>
 							<Link className="card-link" to={`/item/${item.id}`}>
 								<img
