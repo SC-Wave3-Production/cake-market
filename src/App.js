@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCakes } from './redux/reducers/cakes';
 import Cards from './components/Cards';
 import CakeDetails from './components/CakeDetails';
+import Header from './components/Header';
 
 import './App.css';
 
@@ -18,7 +19,8 @@ function App() {
 	});
 
 	return (
-		<div className="title">
+		<div className="">
+			<Header />
 			<Switch>
 				<Route exact path="/">
 					<Cards allCakes={allCakes} />
