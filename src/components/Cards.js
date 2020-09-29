@@ -10,7 +10,7 @@ export default function Cards({ allCakes }) {
 					return (
 						<div
 							key={item.id}
-							className="m-1 max-w-sm bg-red-500 p-1 rounded text-center text-gray-800"
+							className="m-1 max-w-sm p-1 rounded text-center text-gray-800"
 						>
 							<Link className="card-link" to={`/item/${item.id}`}>
 								<img
